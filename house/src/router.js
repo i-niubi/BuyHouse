@@ -1,6 +1,6 @@
 import VueRouter from "vue-router"
 
-import home from "./page/home.vue"
+import home from "./pages/home.vue"
 
 
 

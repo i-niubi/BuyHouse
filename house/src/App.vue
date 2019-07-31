@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import home from "./page/home"
+import home from "./pages/home"
 export default {
   name: 'app',
   components: {
