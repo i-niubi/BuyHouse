@@ -10,6 +10,13 @@ import router from "./router"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
 Vue.use(VueAxios, axios)
 
 Vue.use(VueRouter)
