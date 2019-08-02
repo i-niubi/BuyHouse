@@ -6,12 +6,11 @@
     <!-- slides -->
     <swiper-slide v-for="img in homedata[1].list" :key="img.id" class="city">
      <img :src="img.img_url">
-     <div class="cityname">
+     <div class="cityname" @click="detail(img.unique_name)">
       <h4>{{ img.chinesecountry }}</h4>
       <p>{{ img.englishcountry }}</p>
      </div>
     </swiper-slide>
-    <!-- Optional controls -->
   </swiper>
    <div class="citylist">
     <span v-for="name in homedata[2].list" :key="name.rid">{{ name.chinesecity }}</span>
@@ -35,6 +34,12 @@ export default {
  },
  computed:{
   ...mapState(["homedata"])
+ },
+ methods:{
+  detail(cityname){
+    console.log(this.$router.push)
+    this.$router.push({path:`/GosHouse/${cityname}`})
+  }
  }
 }
 </script>
@@ -61,14 +66,17 @@ export default {
 }
 .cityname{
  position: absolute;
- top:10px;
+ top:0;
  color: #fff;
  text-align: left;
  text-indent: 8px;
+ width: 100%;
+ height: 100%;
 }
 .cityname h4{
  font-size: 18px;
- margin-bottom: 8px;
+ margin-bottom: 4px;
+ margin-top: 10px;
 }
 .cityname p{
  font-size: 14px;
