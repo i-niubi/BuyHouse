@@ -48,7 +48,10 @@ export default {
     },
      components:{VueBetterScroll},
      mounted() {
-         let url = '/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=uk&type_id=24';
+        let name=this.$route.params.id
+        console.log(name)
+        let url = `/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${name}&type_id=24`;
+        console.log(url)
         axios.get(url)
         .then((res) => {
             // console.log(res.data.data.result)
@@ -203,6 +206,9 @@ input,h1,h2,h3,h4,h5,h6,p,li{
     height:20px;
     overflow: hidden;
     width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .big-box p .p-l{
     padding-right:10px;

@@ -52,20 +52,7 @@ export default {
   width: 100%!important;
   margin-right: 0
 }
-.swiper-container-horizontal>.swiper-pagination-bullets{
-  bottom: 30px;
-}
-.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
-  margin: 0 10px !important;
-}
-.swiper-pagination-bullet{
-  background: #fff;
-  opacity: 1;
-}
-.swiper-pagination-bullet-active{
-  color: #fff !important;
-  width: 12px !important;
-}
+
 .search{
   position: relative;
   height: 50px;
@@ -98,5 +85,15 @@ export default {
 }
 .search p input{
   border: 0
+}
+.swiper-container-horizontal>.swiper-pagination-bullets{
+  bottom: 50px !important;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+  margin: 0 10px !important;
+}
+.swiper-pagination-bullet-active{
+  background: red !important;
+  width: 12px !important;
 }
 </style>
