@@ -12,6 +12,7 @@ import getHotHouse from "./pages/getHotHouse.vue"
 
 import getHotHousedetaile from "./components/getHotHousedetaile.vue"
 import HouseGuide from "./pages/HouseGuide.vue"
+import PictureDetails from "./pages/PictureDetails.vue"
 const router= new VueRouter({
  routes:[
   {path:"/",redirect:"home"},

@@ -16,7 +16,7 @@
                 <div v-for="m in houses" :key="m.house_id" class="big-box" @click="toDetail(m.house_id)">
                             <div class="img-box">
                                 <img :src="m.thumburl" >
-                                <div class="txt"><span class="txt-l">{{m.base_desc.length==8? m.base_desc[5].slice(0,-3) : m.base_desc[4].slice(0,-3)}}</span><span class="txt-r">{{m.base_desc.length==8?   m.base_desc[5].slice(-2,-1) : m.base_desc[4].slice(-2,-1)}}%</span></div>
+                                <div class="txt"><span class="txt-l">近一年涨幅</span><span class="txt-r">{{m.roi}}%</span></div>
                             </div>
                             <p><span class="p-l">{{m.region.city_lang}}</span><span class="p-r">{{m.title}}</span></p>
                             <h3>￥<span>{{m.cost.price}}</span>万起</h3>
@@ -50,22 +50,16 @@ export default {
      components:{VueBetterScroll},
      mounted() {
         let name=this.$route.params.id
-        console.log(name)
         let url = `/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${name}&type_id=24`;
-        console.log(url)
         axios.get(url)
         .then((res) => {
             // console.log(res.data.data.result)
            this.name=res.data.data.crumbs[0].name
            this.houses=res.data.data.result
-           
         })
-
-
     },
     methods:{
         toDetail(id){
-            
             this.$router.push('/Details/'+id)
         },
       
@@ -215,7 +209,6 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 }
 .big-box p{
     display: inline-block;
-    overflow: hidden;
     width:100%;
     white-space: nowrap;
     overflow: hidden;

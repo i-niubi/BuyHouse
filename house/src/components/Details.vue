@@ -8,7 +8,6 @@
           <swiper-slide v-for="m,i in imgs" :key="i">
               <img :src="m" class="simg">
           </swiper-slide>
-         
        </swiper>
          <div class="img-length">{{num}}/{{imgs.length}}</div>
          <h2>{{txt.title}}</h2>
@@ -236,6 +235,7 @@ export default {
            this.fy=res.data.data.pc_similar_houses_list
            this.guide=res.data.data.webapp_news_list
            this.txt=res.data.data.pc_house_detail.data
+           console.log(this.txt.housetag)
            for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
                for(var k=0;k<res.data.data.pc_house_detail.data.headimglist[i].list.length;k++){
                    this.imgs.push(res.data.data.pc_house_detail.data.headimglist[i].list[k])
