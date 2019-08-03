@@ -56,10 +56,7 @@ export default {
             // console.log(res.data.data.result)
            this.name=res.data.data.crumbs[0].name
            this.houses=res.data.data.result
-           
         })
-
-
     },
     methods:{
         toDetail(id){

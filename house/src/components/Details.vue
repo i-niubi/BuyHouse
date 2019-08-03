@@ -15,8 +15,8 @@
              <p class="mp">{{txt.sign}}<span class="msp">{{txt.price}}</span>{{txt.qi}}<span class="mssp">{{txt.sign_enl+txt.price_enl_wan+txt.qi}}</span>
              <span class="jijia">房贷计算器</span></p>
         </div> 
-        <div v-for="kk in txt.housetag" :key="kk.tid" class="ziu" >
-                <span :style="{ color:kk.tag_color, border:kk.tag_color}">{{kk.tagname}}</span>
+        <div v-for="kk in txt.housetag" :key="kk.tid" class="ziu">
+            <span :style="{ color:kk.tag_color,border:border,borderColor:kk.tag_color}">{{kk.tagname}}</span>
         </div>
         <ul class="xq">
             <li>
@@ -219,6 +219,7 @@ export default {
             msg:"展开",
             height2:"66px",
             rotate2:"rotate(180deg)",
+            border:"1px solid"
         }
     },
      computed: {
@@ -364,6 +365,8 @@ h2{
 .ziu span{
     margin-left:0;
    font-size:12px;
+   display: inline-block;
+   padding: 4px
 }
 .xq{
     overflow: hidden;
