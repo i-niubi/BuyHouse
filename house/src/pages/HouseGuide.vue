@@ -11,7 +11,7 @@
             <div class="box-txt">
                 <div class="box-txt-p" v-for="m in txt.list" :key="m.id">
                     <img :src="m.litpic">
-                    <div>
+                    <div class="pps">
                         <p>{{m.title}}</p>
                         <p><span class="iconfont "></span><span>{{m.click_num}}</span><span>{{m.create_time}}</span></p>
                     </div>
@@ -94,12 +94,29 @@ body,h1,h2,h3,h4,h5,h6,li,p,span,ul{
 .box .box-txt .box-txt-p{
     padding:18px 0;
     border-bottom:1px solid #ccc;
-    overflow: hidden;
+    width:100%;
+    display: flex;
 }
 .box .box-txt .box-txt-p img{
     width:102px;
     height:58px;
     margin-right:20px;
-    display: block;
+}
+.box .box-txt .box-txt-p .pps{
+    height:58px;
+}
+.box .box-txt .box-txt-p .pps p:nth-of-type(1){
+    font-size:16px;
+    color:#313131;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.box .box-txt .box-txt-p .pps p:nth-of-type(2){
+    font-size:12px;
+    color:#999;
+}
+.box .box-txt .box-txt-p .pps p:nth-of-type(2) span{
+    margin-right:5px;
 }
 </style>
