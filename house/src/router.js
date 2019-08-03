@@ -19,14 +19,12 @@ const router= new VueRouter({
   {path:"/home",component:home},
   {path:"/GosHouse/:id",component:GosHouse},
   {path:"/GosHouse/:englishcountry/:region_unique_name:/school_unique_name",component:GosHouse},
-  {path:"/Details/:id",component:Details},
   {path:"/searchhouse",component:searchhouse},
   {path:"/getHotHouse",component:getHotHouse,
    children:[{
     path:"getHotHousedetaile",component:getHotHousedetaile
    }]
   },
-
   {path:"/Details/:id",component:Details},
   {path:"/HouseGuide/:id",component:HouseGuide},
   {path:"/PictureDetails/:id",component:PictureDetails},
