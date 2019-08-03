@@ -25,8 +25,6 @@ const router= new VueRouter({
     path:"getHotHousedetaile",component:getHotHousedetaile
    }]
   },
-
-  {path:"/Details/:id",component:Details},
   {path:"/HouseGuide/:id",component:HouseGuide}
  ]
 })
