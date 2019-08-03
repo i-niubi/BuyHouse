@@ -2,7 +2,7 @@
  <div>
   <div class="hot">
    <ul>
-    <li>
+    <li @click="hothouse">
      <span class="iconfont icon-thin-_home_flat"></span>
      <p>精选好房</p>
      <b>HOT</b>
@@ -21,7 +21,11 @@
 </template>
 <script>
 export default {
- 
+ methods:{
+  hothouse(){
+   this.$router.push({path:"getHotHouse"})
+  }
+ }
 }
 </script>
 

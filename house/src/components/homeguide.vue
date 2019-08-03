@@ -72,7 +72,7 @@ export default {
 .msg h4{
  font-size: 18px;
  margin-bottom: 6px;
- margin-top: 30px;
+ margin-top: 20px;
 }
 .msg p{
  font-size: 12px;
