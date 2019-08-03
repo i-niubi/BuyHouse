@@ -16,7 +16,7 @@
                 <div v-for="m in houses" :key="m.house_id" class="big-box" @click="toDetail(m.house_id)">
                             <div class="img-box">
                                 <img :src="m.thumburl" >
-                                <div class="txt"><span class="txt-l">{{m.base_desc.length==8? m.base_desc[5] : m.base_desc[4]}}</span><span class="txt-r">{{m.base_desc.length==8?   m.base_desc[5]: m.base_desc[4]}}%</span></div>
+                                <div class="txt"><span class="txt-l">近一年涨幅</span><span class="txt-r">{{m.roi}}%</span></div>
                             </div>
                             <p><span class="p-l">{{m.region.city_lang}}</span><span class="p-r">{{m.title}}</span></p>
                             <h3>￥<span>{{m.cost.price}}</span>万起</h3>
