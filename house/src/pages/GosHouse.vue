@@ -50,9 +50,7 @@ export default {
      components:{VueBetterScroll},
      mounted() {
         let name=this.$route.params.id
-        console.log(name)
         let url = `/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${name}&type_id=24`;
-        console.log(url)
         axios.get(url)
         .then((res) => {
             // console.log(res.data.data.result)
