@@ -32,6 +32,7 @@ export default {
 <style scoped>
 .hot{
  margin-top: 12px;
+ text-align: center;
 }
 .hot li .iconfont{
  color: #ff5a5f;
