@@ -11,7 +11,7 @@
      </swiper>
    </div>
    <div class="search">
-     <p>
+     <p @click="searchhouse">
        <span class="icon-sousuo iconfont"></span>
        <input type="text" placeholder="搜索您想买房的城市">
      </p>
@@ -37,6 +37,11 @@ export default {
  },
  computed:{
   ...mapState(["bannerimg"])
+ },
+ methods:{
+   searchhouse(){
+    this.$router.push({path:"searchhouse"})
+   }
  }
 }
 </script>
@@ -46,13 +51,12 @@ export default {
 }
 .banner .imgbox img{
   width: 100%;
-  height: 197px;
+  margin: 0 auto;
 }
 .imgbox{
   width: 100%!important;
-  margin-right: 0
+  margin-right: 0;
 }
-
 .search{
   position: relative;
   height: 50px;

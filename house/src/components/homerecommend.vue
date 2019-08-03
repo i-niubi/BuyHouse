@@ -2,10 +2,9 @@
  <div>
   <div class="homerecommend">
     <h3>{{ homedata[4].title }}</h3>
-    <swiper :options="swiperOption" ref="mySwiper">
-     <!-- slides -->
-     <swiper-slide class="msg" v-for="img in homedata[4].list" :key="img.roi">
-      <img :src="img.thumburl">
+    <swiper :options="swiperOption">
+     <swiper-slide class="msg" v-for="img in homedata[4].list" :key="img.id" >
+      <img :src="img.thumburl" @click="todetail(img.id)">
       <div class="roi">
        <span>{{ msg }}</span>
        <b>{{ img.roi }}%</b>
@@ -45,7 +44,13 @@ export default {
  computed:{
   ...mapState(["homedata"])
  },
- mounted(){ }
+ mounted(){ },
+ methods:{
+  todetail(id){
+   console.log(id)
+   this.$router.push({path:`Details/${id}`})
+  }
+ }
 }
 </script>
 <style scoped>

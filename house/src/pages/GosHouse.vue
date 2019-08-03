@@ -204,7 +204,6 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 .big-box p{
     display: inline-block;
     height:20px;
-    overflow: hidden;
     width:100%;
     white-space: nowrap;
     overflow: hidden;

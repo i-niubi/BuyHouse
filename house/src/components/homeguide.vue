@@ -60,11 +60,14 @@ export default {
  position: absolute;
  width: 100%;
  bottom: 14px;
- color: #fff
+ color: #fff;
+ height: 100%;
+ text-align: center;
 }
 .msg h4{
  font-size: 18px;
  margin-bottom: 6px;
+ margin-top: 20px;
 }
 .msg p{
  font-size: 12px;

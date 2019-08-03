@@ -6,12 +6,25 @@ import GosHouse from "./pages/GosHouse.vue"
 
 import Details from "./components/Details.vue"
 
+import searchhouse from "./pages/searchhouse.vue"
+
+import getHotHouse from "./pages/getHotHouse.vue"
+
+import getHotHousedetaile from "./components/getHotHousedetaile.vue"
 const router= new VueRouter({
  routes:[
   {path:"/",redirect:"home"},
   {path:"/home",component:home},
   {path:"/GosHouse/:id",component:GosHouse},
-  {path:"/Details/:id",component:Details}
+  {path:"/GosHouse/:englishcountry/:region_unique_name:/school_unique_name",component:GosHouse},
+  {path:"/Details/:id",component:Details},
+  {path:"/searchhouse",component:searchhouse},
+  {path:"/getHotHouse",component:getHotHouse,
+   children:[{
+    path:"getHotHousedetaile",component:getHotHousedetaile
+   }]
+  }
+
  ]
 })
 
