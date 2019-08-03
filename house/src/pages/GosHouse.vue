@@ -10,8 +10,9 @@
                             @pullingDown="onPullingDown"
                             @pullingUp="onPullingUp"> -->
                 <div class="header-box">
-                    <span class="iconfont icon-xiaoyu header-span"></span><span class="iconfont  icon-fangdajing header-span-two"><i>{{name}}买房</i></span><div class="head"></div>
+                    <span class="iconfont icon-xiaoyu header-span" @click="goUpl"></span><span class="iconfont  icon-fangdajing header-span-two"><i>{{name}}买房</i></span><div class="head"></div>
                 </div>
+                <div class="bg"></div>
                 <div v-for="m in houses" :key="m.house_id" class="big-box" @click="toDetail(m.house_id)">
                             <div class="img-box">
                                 <img :src="m.thumburl" >
@@ -28,10 +29,10 @@
             <!-- </vue-better-scroll> -->
       </main>
 
-        <!-- <div class="footer">
+        <div class="footer">
             <p>排序<span class="iconfont icon-3 ssp"></span></p>
             <p>筛选<span class="iconfont icon-shaixuan"></span></p>
-        </div> -->
+        </div>
        
     </div>
 </template>
@@ -65,8 +66,12 @@ export default {
     methods:{
         toDetail(id){
             
-            this.$router.push('/details/'+id)
+            this.$router.push('/Details/'+id)
         },
+      
+        goUpl(){
+             this.$router.go(-1)
+        }
     }
     //  methods:{
     //     toDetail(id){
@@ -139,17 +144,18 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 }
 .header-box{
    position: relative;
-   top:1%;
-   width:100%;
-   background:#fff;
-   border-bottom:2px solid #f7f7f7;
+   top:5px;
+   width:88%;
+   margin-bottom:5px;
    padding-bottom:10px;
+   margin:0 auto;
 }
 .header-box .header-span{
     position:absolute;
     margin-top:10px;
     font-size:14px;
     color:#999;
+    left:-10px;
 }
 .header-box .header-span-two{
     position:absolute;
@@ -160,6 +166,11 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 .header-box .header-span-two i{
    font-style:normal;
    margin-left:5px;
+}
+.bg{
+    width:100%;
+    height:1px;
+    background:#ccc;
 }
 .head{
   width:80%;
@@ -193,7 +204,7 @@ input,h1,h2,h3,h4,h5,h6,p,li{
     color:#fff;
     font-size:14px;
     border-radius: 2px 0 0 2px;
-   padding:2px 5px;
+    padding:2px 5px;
 }
 .img-box .txt .txt-r{
     background:#ff5a5f;
@@ -204,12 +215,13 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 }
 .big-box p{
     display: inline-block;
-    height:20px;
     overflow: hidden;
     width:100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size:16px;
+    margin:10px 0;
 }
 .big-box p .p-l{
     padding-right:10px;
@@ -223,6 +235,7 @@ input,h1,h2,h3,h4,h5,h6,p,li{
     font-weight: 100;
     font-size:20px;
     color:#ff5a5f;
+    margin-bottom:5px;
 }
 .big-box h3 span{
     font-size:24px;
@@ -231,6 +244,7 @@ input,h1,h2,h3,h4,h5,h6,p,li{
     font-weight:100;
     font-size:14px;
     color:#666;
+    margin-bottom:5px;
 }
 .big-box h5{
     display: inline-block;
@@ -240,10 +254,9 @@ input,h1,h2,h3,h4,h5,h6,p,li{
     height: 24px;
     border-radius: 2px;
     margin-right: 5px;
-    margin-bottom: 5px;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 32px;
     color: #fff;
-    padding: 0 5px;
+    padding: 4px 5px;
 }
 </style>
