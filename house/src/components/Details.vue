@@ -6,7 +6,7 @@
         </div>
        <swiper :options="swiperOption" ref="mySwiper" >
           <swiper-slide v-for="m,i in imgs" :key="i">
-              <img :src="m" class="simg">
+              <img :src="m" class="simg" @click="topds()">
           </swiper-slide>
          
        </swiper>
@@ -77,8 +77,8 @@
             <div class="apartment-box">
                 <h5>品质户型({{txt.layout.length}})<span>全部户型></span></h5>
             </div>
-                 <swiper :options="swiperOption" ref="mySwiper" class="apartment-boxs">
-                     <swiper-slide v-for="box in txt.layout" :key="box.id">
+                 <swiper :options="swiperContainer" ref="mySwiper" class="apartment-boxs">
+                    <swiper-slide v-for="box in txt.layout" :key="box.id">
                     <p >{{box.title}}</p>
                     <p >总面积:{{box.size}}㎡</p>
                     <p v-html="box.price_rmb_string"></p>
@@ -232,15 +232,14 @@ export default {
                }
            }
             this.foot=res.data.data.pc_similar_houses_list;
-           
         })
-      console.log('this is current swiper instance object', this.swiper)
-      this.swiper.slideTo(3, 1000, false)
-    
     },
     methods:{
         goUpl(){
             this.$router.go(-1)
+        },
+        topds(id){
+             this.$router.push('/PictureDetails/'+id)
         },
         nm(){
             this.num++
@@ -257,7 +256,7 @@ export default {
  
 </script>
 <style scoped>
-@import url("http://at.alicdn.com/t/font_1331738_880f9e4hxes.css");
+@import url("http://at.alicdn.com/t/font_1331544_ly4l8ehnudn.css");
 input,h1,h2,h3,h4,h5,h6,p,li,ul{
     margin:0;
     padding:0;
@@ -268,14 +267,13 @@ img{
 li{
     list-style: none;
 }
-@import url("http://at.alicdn.com/t/font_1325439_1usenc4qpvy.css");
+@import url("http://at.alicdn.com/t/font_1331738_880f9e4hxes.css");
 .header-box{
    position: relative;
    width:100%;
    background:#fff;
    border-bottom:2px solid #f7f7f7;
    padding-bottom:10px;
-   margin-top:5px;
 }
 .header-box .header-span{
     position:absolute;
@@ -285,10 +283,9 @@ li{
 }
 .header-box h1{
     font-weight:100;
-    font-size:14px;
+    font-size:16px;
     text-align: center;
     line-height: 30px;
-   margin-left:10px;
 }
 .simg{
     width:100%;
@@ -435,7 +432,6 @@ h2{
     border: 1px solid #ccc;
     border-radius: 3px;
 }
-
 .project .consultation{
     margin-top: 20px;
     height: 44px;
@@ -447,9 +443,8 @@ h2{
     padding: 0 15px;
     margin-bottom: 15px;
 }
-.project .consultation .icon-daohangxinxi{
+.project .consultation span:nth-of-type(1){
     font-size:24px;
-    margin-right:5px;
 }
 .project .consultation .three{
     width: 75px;
@@ -549,7 +544,6 @@ h2{
     border-radius: 3px;
     border: 1px solid #d4d4d4;
     box-shadow: 2px 5px 5px #ccc;
-    /* padding: 13px 0 13px 20px; */
     font-size: 16px;
     position: relative;
     display: inline-block;

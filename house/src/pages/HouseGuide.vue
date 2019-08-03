@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <h1><span class="iconfont "> <</span>{{txt.info.top.title}}</h1>
+            <h1><span class="iconfont icon-leftarrow" @click="goHome"></span>{{txt.info.top.title}}</h1>
         </div>
         <div class="banner">
             <img :src="txt.info.top.litpic">
@@ -13,7 +13,7 @@
                     <img :src="m.litpic">
                     <div class="pps">
                         <p>{{m.title}}</p>
-                        <p><span class="iconfont "></span><span>{{m.click_num}}</span><span>{{m.create_time}}</span></p>
+                        <p><span class="iconfont icon-icon-test"></span><span>{{m.click_num}}</span><span>{{m.create_time}}</span></p>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,9 @@ export default {
         }
     },
     methods:{
-
+        goHome(){
+            this.$router.go(-1)
+        }
     },
     computed:{
      
@@ -45,6 +47,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url("http://at.alicdn.com/t/font_1331927_1hketj3bo3f.css");
 body,h1,h2,h3,h4,h5,h6,li,p,span,ul{
     margin:0;
     padding:0;
@@ -59,13 +62,16 @@ body,h1,h2,h3,h4,h5,h6,li,p,span,ul{
 .header h1{
     display: block;
     font-size:14px;
+    padding-left:30px;
     font-weight:100px;
     color:#333;
-    line-height: 50px;
+    line-height: 48px;
 }
 .header h1 span{
     position:absolute;
     left:10px;
+    color:#999;
+    font-size:12px;
 }
 .banner{
     width:100%;
@@ -108,9 +114,10 @@ body,h1,h2,h3,h4,h5,h6,li,p,span,ul{
 .box .box-txt .box-txt-p .pps p:nth-of-type(1){
     font-size:16px;
     color:#313131;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width:100%;
+    height:47px;
 }
 .box .box-txt .box-txt-p .pps p:nth-of-type(2){
     font-size:12px;
