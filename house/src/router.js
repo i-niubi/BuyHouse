@@ -11,6 +11,7 @@ import searchhouse from "./pages/searchhouse.vue"
 import getHotHouse from "./pages/getHotHouse.vue"
 
 import getHotHousedetaile from "./components/getHotHousedetaile.vue"
+import HouseGuide from "./pages/HouseGuide.vue"
 const router= new VueRouter({
  routes:[
   {path:"/",redirect:"home"},
@@ -23,8 +24,10 @@ const router= new VueRouter({
    children:[{
     path:"getHotHousedetaile",component:getHotHousedetaile
    }]
-  }
+  },
 
+  {path:"/Details/:id",component:Details},
+  {path:"/HouseGuide/:id",component:HouseGuide}
  ]
 })
 

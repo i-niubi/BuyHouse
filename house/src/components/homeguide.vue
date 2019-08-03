@@ -6,7 +6,7 @@
        <!-- slides -->
        <swiper-slide class="img" v-for="img in homedata[3].list" :key="img.id">
         <img :src="img.litpic">
-        <div class="msg">
+        <div class="msg" @click="goHouseGuide(img.id)">
           <h4>{{ img.title }}</h4>
           <p>{{ img.keyword }}</p>
         </div>
@@ -33,6 +33,11 @@ export default {
  },
  mounted(){
   
+ },
+ methods:{
+   goHouseGuide(id){
+      this.$router.push('/HouseGuide/'+id)
+   }
  }
 }
 </script>
@@ -59,7 +64,7 @@ export default {
 .msg{
  position: absolute;
  width: 100%;
- bottom: 14px;
+ top: 0;
  color: #fff;
  height: 100%;
  text-align: center;
