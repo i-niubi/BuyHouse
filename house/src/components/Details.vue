@@ -8,9 +8,8 @@
           <swiper-slide v-for="m,i in imgs" :key="i">
               <img :src="m" class="simg">
           </swiper-slide>
-         
+         <div class="swiper-pagination"  slot="pagination"></div>
        </swiper>
-         <div class="img-length">{{num}}/{{imgs.length}}</div>
          <h2>{{txt.title}}</h2>
          <div class="money">
              <p class="mp">{{txt.sign}}<span class="msp">{{txt.price}}</span>{{txt.qi}}<span class="mssp">{{txt.sign_enl+txt.price_enl_wan+txt.qi}}</span>
@@ -80,8 +79,8 @@
             <div class="apartment-box">
                 <h5>品质户型({{txt.layout.length}})<span>全部户型></span></h5>
             </div>
-                 <swiper :options="swiperOption" ref="mySwiper" class="apartment-boxs">
-                     <swiper-slide v-for="box in txt.layout" :key="box.id">
+             <swiper :options="swiperOption2" ref="mySwiper" class="apartment-boxs">
+                  <swiper-slide v-for="box in txt.layout" :key="box.id">
                     <p >{{box.title}}</p>
                     <p >总面积:{{box.size}}㎡</p>
                     <p v-html="box.price_rmb_string"></p>
@@ -207,7 +206,13 @@ export default {
             imgs:[],
             foot:[],
             swiperOption:{
-            //   slidesPerView: ,
+              pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                },
+            },
+            swiperOption2:{
+              slidesPerView: 1.5,
             },
             txt:[],
             sld:"1px solid",
@@ -305,13 +310,14 @@ li{
     margin-top:10px;
     font-size:14px;
     color:#999;
+    left: 20px;
 }
 .header-box h1{
     font-weight:100;
     font-size:14px;
     text-align: center;
     line-height: 30px;
-   margin-left:10px;
+    margin-left:10px;
 }
 .simg{
     width:100%;
@@ -813,5 +819,14 @@ h2{
     font-size: 16px;
     border-radius: 2px;
     text-align: center;
+}
+.swiper-pagination-fraction{
+    width: 48px;
+    height: 22px;
+    color:#fff;
+    background:rgba(0,0,0,.5);
+    border-radius:12px;
+    line-height: 22px;
+    left: 80%;
 }
 </style>

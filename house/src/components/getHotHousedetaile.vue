@@ -3,7 +3,7 @@
   <div class="detaile">
    <!-- <div v-for="box,i in HotHouse[0]" :key="i"> -->
     <div v-for="msg in HotHouse[0].houses" :key="msg.id" class="msg">
-     <img :src="msg.thumburl">
+     <img :src="msg.thumburl" @click="todetail(msg.id)">
      <p>
       <span>{{ msg.chinesecity }}</span>
       <b>{{ msg.title }}</b>
@@ -32,6 +32,12 @@ export default {
  },
  computed:{
   ...mapState(["HotHouse"])
+ },
+ methods:{
+  todetail(id){
+   console.log(id)
+   this.$router.push({path:`/Details/${id}`})
+  }
  }
 }
 </script>
