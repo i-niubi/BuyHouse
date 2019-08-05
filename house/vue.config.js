@@ -22,7 +22,8 @@ module.exports={
         ws: true, // proxy websockets
         pathRewrite: {
           '^/api': '', // rewrite path
-        }
+        },
+        secure:false
     }
   }
  }

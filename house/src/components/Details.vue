@@ -6,12 +6,9 @@
         </div>
        <swiper :options="swiperOption" ref="mySwiper" >
           <swiper-slide v-for="m,i in imgs" :key="i">
-              <img :src="m" class="simg">
+              <img :src="m" class="simg" @click="toimg(txt.id)">
           </swiper-slide>
-<<<<<<< HEAD
          <div class="swiper-pagination"  slot="pagination"></div>
-=======
->>>>>>> bb0d8ca02d48350c9d083791cbc6ce223d16dac3
        </swiper>
          <h2>{{txt.title}}</h2>
          <div class="money">
@@ -228,7 +225,8 @@ export default {
             msg:"展开",
             height2:"66px",
             rotate2:"rotate(180deg)",
-            border:"1px solid"
+            border:"1px solid",
+            country_unique_name:""
         }
     },
      computed: {
@@ -238,13 +236,18 @@ export default {
     },
     mounted() {
         let id = this.$route.params.id;
+        console.log(this.$route)
+        console.log(id)
         axios.get("https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid="+id+"&src=webapp")
         .then((res) => {
-           console.log(res.data.data.pc_similar_houses_list)
+            console.log(res)
+        //    console.log(res.data.data.pc_similar_houses_list)
            this.fy=res.data.data.pc_similar_houses_list
            this.guide=res.data.data.webapp_news_list
            this.txt=res.data.data.pc_house_detail.data
-           console.log(this.txt.housetag)
+           console.log(this.txt)
+           this.country_unique_name=res.data.data.pc_house_detail.data.country_unique_name
+           console.log(this.country_unique_name)
            for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
                for(var k=0;k<res.data.data.pc_house_detail.data.headimglist[i].list.length;k++){
                    this.imgs.push(res.data.data.pc_house_detail.data.headimglist[i].list[k])
@@ -259,7 +262,8 @@ export default {
     },
     methods:{
         goUpl(){
-            this.$router.go(-1)
+            // if(this.country_unique_name)
+            this.$router.push({path:`/GosHouse/${this.country_unique_name}`})
         },
         nm(){
             if(this.height=="200px"){
@@ -282,6 +286,10 @@ export default {
                 this.msg="展开",
                 this.rotate2="rotate(180deg)"           
             }
+        },
+        toimg(id){
+            console.log(id)
+            this.$router.push({path:`/PictureDetails/${id}`})
         }
     }
 

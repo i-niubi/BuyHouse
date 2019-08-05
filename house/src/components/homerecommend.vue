@@ -4,7 +4,7 @@
     <h3>{{ homedata[4].title }}</h3>
     <swiper :options="swiperOption">
      <swiper-slide class="msg" v-for="img in homedata[4].list" :key="img.id" >
-      <img :src="img.thumburl" @click="todetail(img.id)">
+      <img :src="img.thumburl" @click="todetail(img.id,home)">
       <div class="roi">
        <span>{{ msg }}</span>
        <b>{{ img.roi }}%</b>
@@ -46,9 +46,9 @@ export default {
  },
  mounted(){ },
  methods:{
-  todetail(id){
+  todetail(id,home){
    console.log(id)
-   this.$router.push({path:`Details/${id}`})
+   this.$router.push({path:`Details/${id}`},home)
   }
  }
 }
