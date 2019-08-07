@@ -13,12 +13,13 @@ import getHotHouse from "./pages/getHotHouse.vue"
 import getHotHousedetaile from "./components/getHotHousedetaile.vue"
 import HouseGuide from "./pages/HouseGuide.vue"
 import PictureDetails from "./pages/PictureDetails.vue"
+import Calculator from "./pages/Calculator.vue"
 const router= new VueRouter({
  routes:[
   {path:"/",redirect:"home"},
   {path:"/home",component:home},
   {path:"/GosHouse/:id",component:GosHouse},
-  {path:"/GosHouse/:englishcountry/:region_unique_name:/school_unique_name",component:GosHouse},
+  // {path:"/GosHouse/:englishcountry/:region_unique_name:/school_unique_name",component:GosHouse},
   {path:"/Details/:id",component:Details},
   {path:"/searchhouse",component:searchhouse},
   {path:"/getHotHouse",component:getHotHouse,
@@ -26,7 +27,9 @@ const router= new VueRouter({
     path:"getHotHousedetaile",component:getHotHousedetaile
    }]
   },
-  {path:"/HouseGuide/:id",component:HouseGuide}
+  {path:"/HouseGuide/:id",component:HouseGuide},
+  {path:"/PictureDetails/:id",component:PictureDetails},
+  {path:"/Calculator/",component:Calculator},
  ]
 })
 

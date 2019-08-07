@@ -11,7 +11,7 @@
      <span class="iconfont icon-chazhaofangyuan"></span>
      <p>帮我找房</p>
     </li>
-    <li>
+    <li @click="toGalculator">
      <span class="iconfont icon-daikuanjisuanqi"></span>
      <p>房贷计算器</p>
     </li>
@@ -24,6 +24,9 @@ export default {
  methods:{
   hothouse(){
    this.$router.push({path:"getHotHouse"})
+  },
+  toGalculator(){
+      this.$router.push({path:"Calculator"})
   }
  }
 }
