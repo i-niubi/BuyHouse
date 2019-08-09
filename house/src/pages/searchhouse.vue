@@ -8,7 +8,7 @@
    </div>
    <h4>热门搜索</h4>
    <ul>
-    <li v-for="name in hotSchools" :key="name.id" @click="houselist1(name.englishcountry,name.region_unique_name,name.school_unique_name)">
+    <li v-for="name in hotSchools" :key="name.id" @click="houselist(name.englishcountry)">
      <div>
       <span>{{ name.chinesecountry }}，</span>
       <span>{{ name.chinesecity }}，</span>
@@ -18,7 +18,7 @@
     </li>
    </ul>
    <ul>
-    <li v-for="name in hotCities" :key="name.rid" @click="houselist2()">
+    <li v-for="name in hotCities" :key="name.rid" @click="houselist(name.englishcountry)">
      <div>
       <span>{{ name.chinesecountry }}，</span>
       <span>{{ name.chinesestate }}，</span>
@@ -55,11 +55,9 @@ export default {
   backhome(){
    this.$router.push({path:"home"})
   },
-  houselist1(englishcountry,region_unique_name,school_unique_name){
-   this.$router.push({path:`/GosHouse/${englishcountry}/${region_unique_name}/${school_unique_name}`})
-  }
-  ,houselist2(){
-   this.$router.push({path:"GosHouse"})
+  houselist(name){
+   this.$router.push({path:`/GosHouse/${name}`})
+   console.log(name)
   }
  }
 }

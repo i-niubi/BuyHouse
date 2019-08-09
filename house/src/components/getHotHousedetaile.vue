@@ -1,8 +1,16 @@
 <template>
  <div>  
   <div class="detaile">
-   <!-- <div v-for="box,i in HotHouse[0]" :key="i"> -->
-    <div v-for="msg in HotHouse[0].houses" :key="msg.id" class="msg">
+   <div class="citylist">
+    <div class="cityname" :style="{height:height}">
+     <span :class="xb==i?'active':'unactive'" v-for="city,i in HotHouse" :key="i" @click="tab(i)">
+      {{ city.title }}
+     </span>
+    </div>
+    <i @click="open" class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui"></i>
+   </div>
+   <div class="msgbox">
+    <div v-for="msg in HotHouse[xb].houses" :key="msg.id" class="msg">
      <img :src="msg.thumburl" @click="todetail(msg.id)">
      <p>
       <span>{{ msg.chinesecity }}</span>
@@ -18,31 +26,57 @@
       <b>{{ msg.roi }}%</b>
      </div>
     </div>
-   <!-- </div> -->
+   </div>  
   </div>
  </div>
 </template>
 <script>
-import {mapState} from "vuex"
+import {mapState,mapActions} from "vuex"
 export default {
  data(){
   return {
-   up:"近一年涨幅"
+   up:"近一年涨幅",
+   height:"42px",
+   xb:0,
   }
  },
  computed:{
   ...mapState(["HotHouse"])
  },
+  mounted(){
+  this.getHotHouse()
+ },
  methods:{
   todetail(id){
-   console.log(id)
    this.$router.push({path:`/Details/${id}`})
+  },
+  ...mapActions(["getHotHouse"]),
+  open(){
+   if(this.height=="42px"){
+    this.height="auto"
+   }else{
+    this.height="42px"
+   }
+  },
+  tab(i){
+   this.xb=i
   }
- }
+ },
 }
 </script>
 <style scoped>
- .detaile{
+ .cityname .active{
+    color:#ff5a5f;
+    border-bottom:3px solid #ff5a5f;
+    height:37px
+   }
+ .cityname .unactive{
+    color:#000;
+    border-bottom:0;
+    height:auto
+   }
+
+ .msgbox{
   padding: 0 18px;
  }
  .msg{
@@ -112,4 +146,28 @@ export default {
  .msg .roi span,.msg .roi b{
   padding: 4px 8px;
  }
+ .citylist{
+ height: auto;
+ width: 100%;
+ position: relative;
+ border-bottom:1px solid #e8e8e8
+}
+.cityname{
+ width: 88%;
+ overflow: hidden;
+}
+.cityname span{
+ color: #000;
+ font-size: 16px;
+ display: inline-block;
+ margin:0 12px;
+ height: 42px;
+ line-height: 42px;
+}
+.citylist i{
+ position: absolute;
+ top: 12px;
+ right: 16px;
+}
+
 </style>

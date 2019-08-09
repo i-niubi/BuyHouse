@@ -9,45 +9,20 @@
    <h3>投资好房</h3>
    <p>甄选全球回报率高的房源</p>
   </div>
-  <div class="citylist">
-   <div class="cityname" :style="{height:height}">
-    <router-link to="/getHotHouse/getHotHousedetaile" v-for="city,i in HotHouse" :key="i">
-     {{ city.title }}
-    </router-link>
-   </div>
-   <i @click="open" class="iconfont icon-zelvxuanzefeiyongdaosanjiaoxingfandui"></i>
-  </div>
-  <router-view></router-view>
+  <getHotHousedetaile/>
  </div>
 </template>
 <script> 
-import axios from "axios"
-import {mapState, mapActions} from "vuex"
+import getHotHousedetaile from "../components/getHotHousedetaile"
 export default {
- data(){
-  return {
-   height:"42px"
-  }
- },
- mounted(){
-  this.getHotHouse()
- },
- computed:{
-  ...mapState(["HotHouse"]),
+ components:{
+  getHotHousedetaile
  },
  methods:{
   backhome(){
    this.$router.push({path:"/home"})
   },
-  ...mapActions(["getHotHouse"]),
-  open(){
-   if(this.height=="42px"){
-    this.height="auto"
-   }else{
-    this.height="42px"
-   }
-  },
- },
+ }
 }
 </script>
 <style scoped>
@@ -91,28 +66,5 @@ export default {
 .banner p{
  font-size: 14px;
  bottom: 30px;
-}
-.citylist{
- height: auto;
- width: 100%;
- position: relative;
- border-bottom:1px solid #e8e8e8
-}
-.cityname{
- width: 88%;
- overflow: hidden;
-}
-a{
- color: #000;
- font-size: 16px;
- display: inline-block;
- margin:0 12px;
- height: 42px;
- line-height: 42px;
-}
-.citylist i{
- position: absolute;
- top: 12px;
- right: 16px;
 }
 </style>

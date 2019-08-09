@@ -3,17 +3,16 @@
   <div class="homehot">
    <h3>{{ homedata[1].title }}</h3>
    <swiper :options="swiperOption" ref="mySwiper">
-    <!-- slides -->
     <swiper-slide v-for="img in homedata[1].list" :key="img.id" class="city">
      <img :src="img.img_url">
-     <div class="cityname" @click="detail(img.unique_name)">
+     <div class="cityname" @click="detail1(img.unique_name)">
       <h4>{{ img.chinesecountry }}</h4>
       <p>{{ img.englishcountry }}</p>
      </div>
     </swiper-slide>
   </swiper>
    <div class="citylist">
-    <span v-for="name in homedata[2].list" :key="name.rid">{{ name.chinesecity }}</span>
+    <span v-for="name in homedata[2].list" :key="name.rid" @click="detail2(name.country_unique_name,name.city_unique_name)">{{ name.chinesecity }}</span>
    </div>
   </div>
  </div>
@@ -36,9 +35,14 @@ export default {
   ...mapState(["homedata"])
  },
  methods:{
-  detail(cityname){
-    console.log(this.$router.push)
-    this.$router.push({path:`/GosHouse/${cityname}`})
+  detail1(cityname){
+   console.log(cityname)
+   this.$router.push({path:`/GosHouse/${cityname}`})
+  },
+  detail2(countryname,cityname){
+   console.log(cityname)
+   console.log(countryname)
+   this.$router.push({path:`/GosHouse/${countryname}/${cityname}`})
   }
  }
 }

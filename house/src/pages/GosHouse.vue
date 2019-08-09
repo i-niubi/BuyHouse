@@ -49,14 +49,26 @@ export default {
     },
      components:{VueBetterScroll},
      mounted() {
-        let name=this.$route.params.id
-        let url = `/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${name}&type_id=24`;
-        axios.get(url)
-        .then((res) => {
-            // console.log(res.data.data.result)
+        let id=this.$route.params.id
+        let name=this.$route.params.name
+        console.log(this.$route.params)
+        let url = `/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${id}&type_id=24`;
+        let url2=`/api/HouseSaleSearchFilter/getHouseList?src=webapp&country_unique_name=${id}&region_unique_name=${name}&type_id=24`
+        if(name){
+         axios.get(url2)
+         .then((res) => {
+           // console.log(res.data.data.result)
            this.name=res.data.data.crumbs[0].name
            this.houses=res.data.data.result
-        })
+         })
+        }else{
+         axios.get(url)
+         .then((res) => {
+           // console.log(res.data.data.result)
+           this.name=res.data.data.crumbs[0].name
+           this.houses=res.data.data.result
+         })
+        }        
     },
     methods:{
         toDetail(id){
@@ -126,6 +138,7 @@ input,h1,h2,h3,h4,h5,h6,p,li{
 }
 .footer p{
     padding: 0 10px;
+    font-size: 16px
 }
 .footer p span{
     font-size:20px;
